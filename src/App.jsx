@@ -1,4 +1,5 @@
 import "./App.css";
+import CarList from "./components/CarList";
 
 function App() {
   const cars = [
@@ -6,20 +7,7 @@ function App() {
     { id: 2, title: "Porsche", price: 90000, color: "blue" },
     { id: 3, title: "Tesla", price: 45000, color: "white" },
   ];
-  return (
-    <>
-      {cars.map((car) => (
-        <li
-          key={car.id}
-          style={{
-            color: car.color,
-          }}
-        >
-          {car.title} ${car.price}
-        </li>
-      ))}
-    </>
-  );
+  return <CarList cars={cars} />;
 }
 
 export default App;
