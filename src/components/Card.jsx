@@ -12,7 +12,7 @@ export default function Card({ product }) {
       badgeBg = "#ad46ff";
   }
   return (
-    <div className="max-w-80 flex flex-col items-start gap-1">
+    <div className="max-w-80 flex flex-col items-start gap-1 hover:shadow-md">
       <div className="relative w-full">
         <img
           src={image}
