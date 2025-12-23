@@ -41,11 +41,11 @@ function App() {
     },
   ];
   return (
-    <>
+    <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-2 py-10 mx-auto">
       {products.map((p) => {
         return <Card key={p.id} product={p} />;
       })}
-    </>
+    </div>
   );
 }
 
