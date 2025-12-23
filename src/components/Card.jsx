@@ -1,5 +1,16 @@
 export default function Card({ product }) {
   const { title, price, description, image, badge } = product;
+  let badgeBg = "";
+  switch (badge) {
+    case "Sale":
+      badgeBg = "#fb2c36";
+      break;
+    case "New":
+      badgeBg = "green";
+      break;
+    case "Limited":
+      badgeBg = "#ad46ff";
+  }
   return (
     <div className="max-w-80 flex flex-col items-start gap-1">
       <div className="relative w-full">
@@ -9,7 +20,12 @@ export default function Card({ product }) {
           className="w-full h-52 object-cover relative"
         />
         {!!badge && (
-          <div className="absolute left-2 top-2 bg-green-500 text-white px-2 py-0.5 text-xs font-bold rounded-xl">
+          <div
+            style={{
+              backgroundColor: badgeBg,
+            }}
+            className="absolute left-2 top-2 text-white px-2 py-0.5 text-xs font-bold rounded-xl"
+          >
             {badge}
           </div>
         )}
