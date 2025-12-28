@@ -3,7 +3,7 @@ import { Button } from "./Button";
 export default function Card({ product }) {
   const { title, quantity, thumbnail } = product;
   return (
-    <div className="w-80 flex flex-col items-start gap-1 hover:shadow-md border border-gray-300 p-2 rounded-lg justify-between ">
+    <div className="w-80 flex flex-col items-start gap-1 hover:shadow-md hover:scale-102 p-2 rounded-lg justify-between bg-white transition-all duration-300 ease-in-out">
       <div className="relative w-full">
         <img
           src={thumbnail}

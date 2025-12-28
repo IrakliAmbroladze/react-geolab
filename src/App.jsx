@@ -18,10 +18,12 @@ function App() {
   }, []);
   console.log("Products are: ", products);
   return (
-    <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-4 py-10 mx-auto">
-      {products.map((p) => {
-        return <Card key={p.id} product={p} />;
-      })}
+    <div className="w-full h-full bg-stone-300">
+      <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-4 py-10 mx-auto">
+        {products.map((p) => {
+          return <Card key={p.id} product={p} />;
+        })}
+      </div>
     </div>
   );
 }
