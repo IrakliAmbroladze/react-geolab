@@ -2,7 +2,6 @@ import { Button } from "./Button";
 
 export default function Card({ product, handleBtnClick }) {
   const { id, title, quantity, thumbnail } = product;
-  console.log(product);
   return (
     <div className="w-80 flex flex-col items-start gap-2 hover:shadow-md hover:scale-102 p-2 rounded-lg justify-between bg-white transition-all duration-300 ease-in-out">
       <div className="relative w-full">

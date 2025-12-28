@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Card from "./components/Card";
-import { increaseQty } from "./utils/products-action";
+import { decreaseQty, increaseQty } from "./utils/products-action";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -22,11 +22,10 @@ function App() {
   const handleBtnClick = ({ id, status }) => {
     switch (status) {
       case "increase":
-        console.log("clicked increase", id);
         setProducts(increaseQty({ products, id }));
         break;
       case "decrease":
-        console.log("clicked decrease", id);
+        setProducts(decreaseQty({ products, id }));
         break;
       case "delete":
         console.log("clicked delete", id);
