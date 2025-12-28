@@ -18,16 +18,16 @@ function App() {
     fetchData();
   }, []);
 
-  const handleBtnClick = (status) => {
+  const handleBtnClick = ({ id, status }) => {
     switch (status) {
       case "increase":
-        console.log("clicked increase");
+        console.log("clicked increase", id);
         break;
       case "decrease":
-        console.log("clicked decrease");
+        console.log("clicked decrease", id);
         break;
       case "delete":
-        console.log("clicked delete");
+        console.log("clicked delete", id);
     }
   };
   return (

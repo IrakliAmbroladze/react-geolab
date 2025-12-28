@@ -1,7 +1,7 @@
 import { Button } from "./Button";
 
 export default function Card({ product, handleBtnClick }) {
-  const { title, quantity, thumbnail } = product;
+  const { id, title, quantity, thumbnail } = product;
   return (
     <div className="w-80 flex flex-col items-start gap-2 hover:shadow-md hover:scale-102 p-2 rounded-lg justify-between bg-white transition-all duration-300 ease-in-out">
       <div className="relative w-full">
@@ -16,18 +16,18 @@ export default function Card({ product, handleBtnClick }) {
         <Button
           textContent="-"
           bgColor="skyblue"
-          handleClick={() => handleBtnClick("decrease")}
+          handleClick={() => handleBtnClick({ id, status: "decrease" })}
         />
         <div className="text-xl font-bold">{quantity}</div>
         <Button
           textContent="+"
           bgColor="skyblue"
-          handleClick={() => handleBtnClick("increase")}
+          handleClick={() => handleBtnClick({ id, status: "increase" })}
         />
         <Button
           textContent="delete"
           bgColor="tomato"
-          handleClick={() => handleBtnClick("delete")}
+          handleClick={() => handleBtnClick({ id, status: "delete" })}
         />
       </div>
     </div>
