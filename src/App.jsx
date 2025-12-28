@@ -18,7 +18,7 @@ function App() {
   }, []);
   console.log("Products are: ", products);
   return (
-    <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-2 py-10 mx-auto">
+    <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-4 py-10 mx-auto">
       {products.map((p) => {
         return <Card key={p.id} product={p} />;
       })}
