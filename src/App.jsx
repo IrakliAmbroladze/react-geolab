@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Card from "./components/Card";
-import { decreaseQty, increaseQty } from "./utils/products-action";
+import {
+  decreaseQty,
+  increaseQty,
+  deleteProduct,
+} from "./utils/products-action";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -28,11 +32,11 @@ function App() {
         setProducts(decreaseQty({ products, id }));
         break;
       case "delete":
-        console.log("clicked delete", id);
+        setProducts(deleteProduct({ products, id }));
     }
   };
   return (
-    <div className="w-full h-full bg-stone-300">
+    <div className="w-full min-h-lvh bg-stone-300">
       <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-4 py-10 mx-auto">
         {products.map((p) => {
           return (

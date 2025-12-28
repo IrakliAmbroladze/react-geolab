@@ -20,3 +20,8 @@ export const decreaseQty = ({ products, id }) => {
   });
   return updatedProducts;
 };
+
+export const deleteProduct = ({ products, id }) => {
+  const updatedProducts = products.filter((product) => product.id !== id);
+  return updatedProducts;
+};
