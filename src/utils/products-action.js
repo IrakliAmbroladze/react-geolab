@@ -1,27 +1,18 @@
-export const increaseQty = ({ products, id }) => {
-  const updatedProducts = products.map((product) => {
-    if (product.id === id) {
-      const newQty = product.quantity + 1;
-      return { ...product, quantity: newQty };
-    }
-    return product;
-  });
-  return updatedProducts;
-};
+export const increaseQty = ({ products, id }) =>
+  products.map((product) =>
+    product.id === id
+      ? { ...product, quantity: product.quantity + 1 }
+      : product,
+  );
 
-export const decreaseQty = ({ products, id }) => {
-  const updatedProducts = products.map((product) => {
-    if (product.id === id) {
-      const newQty = product.quantity - 1;
-      if (newQty < 0) return product;
-      return { ...product, quantity: newQty };
-    }
-    return product;
-  });
-  return updatedProducts;
-};
+export const decreaseQty = ({ products, id }) =>
+  products.map((product) =>
+    product.quantity === 0
+      ? product
+      : product.id === id
+        ? { ...product, quantity: product.quantity - 1 }
+        : product,
+  );
 
-export const deleteProduct = ({ products, id }) => {
-  const updatedProducts = products.filter((product) => product.id !== id);
-  return updatedProducts;
-};
+export const deleteProduct = ({ products, id }) =>
+  products.filter((product) => product.id !== id);
