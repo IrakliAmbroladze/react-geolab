@@ -4,6 +4,9 @@ import Card from "./components/Card";
 
 function App() {
   const [products, setProducts] = useState([]);
+  const handleBtnClick = (status) => {
+    console.log(status);
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -16,12 +19,13 @@ function App() {
     };
     fetchData();
   }, []);
-  console.log("Products are: ", products);
   return (
     <div className="w-full h-full bg-stone-300">
       <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-4 py-10 mx-auto">
         {products.map((p) => {
-          return <Card key={p.id} product={p} />;
+          return (
+            <Card key={p.id} product={p} handleBtnClick={handleBtnClick} />
+          );
         })}
       </div>
     </div>
