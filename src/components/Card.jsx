@@ -13,10 +13,10 @@ export default function Card({ product }) {
       </div>
       <h1 className="text-lg font-bold">{title}</h1>
       <div className="flex justify-between w-full items-center">
-        <Button textContent="-" />
+        <Button textContent="-" bgColor="skyblue" />
         <div className="text-xl font-bold">{quantity}</div>
-        <Button textContent="+" />
-        <Button textContent="delete" />
+        <Button textContent="+" bgColor="skyblue" />
+        <Button textContent="delete" bgColor="tomato" />
       </div>
     </div>
   );
