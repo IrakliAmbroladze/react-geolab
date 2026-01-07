@@ -57,6 +57,10 @@ function App() {
     },
   ]);
 
+  const handleSearch = () => {
+    console.log("search");
+  };
+
   /* useEffect(() => {
     const fetchData = async () => {
       try {
@@ -84,20 +88,24 @@ function App() {
   };
   return (
     <div className="w-full min-h-lvh bg-stone-300 py-10">
-      <div>
+      <div className="flex justify-center items-center gap-2">
         <input
           type="text"
-          className="border border-black mx-auto block rounded-md px-2 py-1"
+          className="border border-black rounded-md px-2 py-1"
           ref={myRef}
           placeholder="search..."
         />
+        <button
+          className="cursor-pointer border rounded-sm px-2 py-1"
+          onClick={handleSearch}
+        >
+          Search
+        </button>
       </div>
       <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-4 py-10 mx-auto">
-        {products.map((p) => {
-          return (
-            <Card key={p.id} product={p} handleBtnClick={handleBtnClick} />
-          );
-        })}
+        {products.map((p) => (
+          <Card key={p.id} product={p} handleBtnClick={handleBtnClick} />
+        ))}
       </div>
     </div>
   );
