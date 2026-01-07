@@ -9,7 +9,7 @@ import {
 
 function App() {
   console.log("render App component");
-  const myRef = useRef();
+  const searchRef = useRef();
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -59,7 +59,8 @@ function App() {
   ]);
 
   const handleSearch = () => {
-    console.log("search");
+    const value = searchRef.current.value;
+    console.log("search value is: ", value);
   };
 
   /* useEffect(() => {
@@ -93,7 +94,7 @@ function App() {
         <input
           type="text"
           className="border border-black rounded-md px-2 py-1"
-          ref={myRef}
+          ref={searchRef}
           placeholder="search..."
         />
         <button
