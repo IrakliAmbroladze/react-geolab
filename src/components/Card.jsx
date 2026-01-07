@@ -12,8 +12,8 @@ export default function Card({ product, handleBtnClick }) {
           className="w-full h-52 object-cover relative"
         />
       </div>*/}
-      <h1 className="text-sm font-bold">{name}</h1>
-      <h2 className="text-sm font-bold">{description}</h2>
+      <h1 className="text-md font-bold">{name}</h1>
+      <h2 className="text-sm ">{description}</h2>
       <div className="flex justify-between w-full items-center">
         {/*  <Button
           textContent="-"
