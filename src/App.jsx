@@ -96,7 +96,7 @@ function App() {
           placeholder="search..."
         />
         <button
-          className="cursor-pointer border rounded-sm px-2 py-1"
+          className="cursor-pointer border rounded-md px-2 py-1 active:scale-95 transition-transform duration-150 ease-in-out"
           onClick={handleSearch}
         >
           Search
