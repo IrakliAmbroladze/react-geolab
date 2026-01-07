@@ -8,6 +8,7 @@ import {
 } from "./utils/products-action";
 
 function App() {
+  console.log("render App component");
   const myRef = useRef();
   const [products, setProducts] = useState([
     {
@@ -96,10 +97,10 @@ function App() {
           placeholder="search..."
         />
         <button
-          className="cursor-pointer border rounded-md px-2 py-1 active:scale-95 transition-transform duration-150 ease-in-out"
+          className="cursor-pointer border rounded-md px-2 py-1.5 active:scale-95 transition-transform duration-150 ease-in-out"
           onClick={handleSearch}
         >
-          Search
+          <img src="search.svg" alt="search" className="w-5 h-5" />
         </button>
       </div>
       <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-4 py-10 mx-auto">
