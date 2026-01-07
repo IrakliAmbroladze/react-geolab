@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Card from "./components/Card";
 import {
@@ -9,13 +9,17 @@ import {
 import { products as initialProducts } from "./constants/products";
 
 function App() {
-  console.log("render App component");
   const searchRef = useRef();
   const [products, setProducts] = useState(initialProducts);
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
   const handleSearch = () => {
-    const value = searchRef.current.value;
-    console.log("search value is: ", value);
+    const value = searchRef.current.value.toLowerCase();
+    const filtered = products.filter((product) =>
+      product.name.toLowerCase().includes(value),
+    );
+    setFilteredProducts(filtered);
+    searchRef.current.value = "";
   };
 
   /* useEffect(() => {
@@ -31,6 +35,9 @@ function App() {
     fetchData();
   }, []);
 */
+  useEffect(() => {
+    setFilteredProducts(products);
+  }, [products]);
   const handleBtnClick = ({ id, status }) => {
     switch (status) {
       case "increase":
@@ -50,7 +57,7 @@ function App() {
           type="text"
           className="border border-black rounded-md px-2 py-1"
           ref={searchRef}
-          placeholder="search..."
+          placeholder="search title..."
         />
         <button
           className="cursor-pointer border rounded-md px-2 py-1.5 active:scale-95 transition-transform duration-150 ease-in-out"
@@ -60,7 +67,7 @@ function App() {
         </button>
       </div>
       <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-4 py-10 mx-auto">
-        {products.map((p) => (
+        {filteredProducts.map((p) => (
           <Card key={p.id} product={p} handleBtnClick={handleBtnClick} />
         ))}
       </div>
