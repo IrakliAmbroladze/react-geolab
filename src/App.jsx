@@ -8,9 +8,55 @@ import {
 } from "./utils/products-action";
 
 function App() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([
+    {
+      id: 1,
+      name: "High-End Laptop",
+      price: 3200,
+      category: "Electronics",
+      inStock: true,
+      rating: 4.8,
+      description: "Powerful workstation for developers and creators.",
+    },
+    {
+      id: 2,
+      name: "Ergonomic Mouse",
+      price: 85,
+      category: "Accessories",
+      inStock: true,
+      rating: 4.5,
+      description: "Wireless vertical mouse designed to reduce wrist strain.",
+    },
+    {
+      id: 3,
+      name: "Mechanical Keyboard",
+      price: 150,
+      category: "Accessories",
+      inStock: false,
+      rating: 4.9,
+      description: "RGB backlit keyboard with tactile blue switches.",
+    },
+    {
+      id: 4,
+      name: "Ultra-Wide Monitor",
+      price: 600,
+      category: "Electronics",
+      inStock: true,
+      rating: 4.7,
+      description: "34-inch curved display for immersive multitasking.",
+    },
+    {
+      id: 5,
+      name: "Noise-Cancelling Headphones",
+      price: 250,
+      category: "Audio",
+      inStock: true,
+      rating: 4.6,
+      description: "Over-ear headphones with active noise cancellation.",
+    },
+  ]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("https://dummyjson.com/carts/5");
@@ -22,7 +68,7 @@ function App() {
     };
     fetchData();
   }, []);
-
+*/
   const handleBtnClick = ({ id, status }) => {
     switch (status) {
       case "increase":
