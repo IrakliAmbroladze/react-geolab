@@ -7,6 +7,8 @@ import {
   deleteProduct,
 } from "./utils/products-action";
 import { products as initialProducts } from "./constants/products";
+import { Route, Routes } from "react-router-dom";
+import Profile from "./pages/Profile";
 
 function App() {
   const searchRef = useRef();
@@ -51,27 +53,32 @@ function App() {
     }
   };
   return (
-    <div className="w-full min-h-lvh bg-stone-300 py-10">
-      <div className="flex justify-center items-center gap-2">
-        <input
-          type="text"
-          className="border border-black rounded-md px-2 py-1"
-          ref={searchRef}
-          placeholder="search title..."
-        />
-        <button
-          className="cursor-pointer border rounded-md px-2 py-1.5 active:scale-95 transition-transform duration-150 ease-in-out"
-          onClick={handleSearch}
-        >
-          <img src="search.svg" alt="search" className="w-5 h-5" />
-        </button>
+    <>
+      <Routes>
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+      <div className="w-full min-h-lvh bg-stone-300 py-10">
+        <div className="flex justify-center items-center gap-2">
+          <input
+            type="text"
+            className="border border-black rounded-md px-2 py-1"
+            ref={searchRef}
+            placeholder="search title..."
+          />
+          <button
+            className="cursor-pointer border rounded-md px-2 py-1.5 active:scale-95 transition-transform duration-150 ease-in-out"
+            onClick={handleSearch}
+          >
+            <img src="search.svg" alt="search" className="w-5 h-5" />
+          </button>
+        </div>
+        <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-4 py-10 mx-auto">
+          {filteredProducts.map((p) => (
+            <Card key={p.id} product={p} handleBtnClick={handleBtnClick} />
+          ))}
+        </div>
       </div>
-      <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-4 py-10 mx-auto">
-        {filteredProducts.map((p) => (
-          <Card key={p.id} product={p} handleBtnClick={handleBtnClick} />
-        ))}
-      </div>
-    </div>
+    </>
   );
 }
 
