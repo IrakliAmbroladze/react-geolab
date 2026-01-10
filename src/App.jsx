@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Billing from "./pages/settings/Billing";
 import ChangePassword from "./pages/settings/ChangePassword";
+import SettingsHome from "./pages/settings/SettingsHome";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />}>
+            <Route index element={<SettingsHome />} />
             <Route path="billing" element={<Billing />} />
             <Route path="change-password" element={<ChangePassword />} />
           </Route>
