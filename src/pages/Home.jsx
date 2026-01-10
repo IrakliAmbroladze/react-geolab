@@ -50,7 +50,7 @@ export default function Home() {
     }
   };
   return (
-    <div className="w-full min-h-lvh bg-stone-300 py-10">
+    <div className="w-full h-full bg-stone-300 py-10">
       <div className="flex justify-center items-center gap-2">
         <input
           type="text"
