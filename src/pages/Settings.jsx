@@ -1,7 +1,18 @@
+import { Link, Outlet } from "react-router-dom";
+
 export default function Settings() {
   return (
-    <div className="w-full h-full grid place-content-center">
-      <div>This is a Settings page</div>
-    </div>
+    <section className="w-full h-full grid place-content-center">
+      <aside>
+        <ul>
+          <li>
+            <Link to="billing">Billing</Link>
+          </li>
+        </ul>
+      </aside>
+      <main>
+        <Outlet />
+      </main>
+    </section>
   );
 }

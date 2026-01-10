@@ -1,23 +1,15 @@
-import { Link } from "react-router-dom";
+import { Navigation } from "./Navigation";
 
 export default function Header() {
   const header_navs = [
-    { display_name: "Home", route_name: "/" },
-    { display_name: "Profile", route_name: "/profile" },
-    { display_name: "Settings", route_name: "/settings" },
+    { display: "Home", route: "/" },
+    { display: "Profile", route: "/profile" },
+    { display: "Settings", route: "/settings" },
   ];
   return (
     <header className="flex justify-between mx-5">
-      <Link to="/">Logo</Link>
-      <nav>
-        <ul className="flex justify-between gap-2">
-          {header_navs.map((nav, index) => (
-            <li key={index}>
-              <Link to={nav.route_name}>{nav.display_name}</Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <Navigation nav_list={[{ display: "Logo", route: "/" }]} />
+      <Navigation nav_list={header_navs} />
     </header>
   );
 }

@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Settings from "./pages/Settings";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Billing from "./pages/settings/Billing";
+import ChangePassword from "./pages/settings/ChangePassword";
 
 function App() {
   return (
@@ -14,7 +16,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/settings" element={<Settings />}></Route>
+          <Route path="/settings" element={<Settings />}>
+            <Route path="billing" element={<Billing />} />
+            <Route path="change-password" element={<ChangePassword />} />
+          </Route>
         </Routes>
       </main>
       <Footer />
