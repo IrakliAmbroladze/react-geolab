@@ -7,10 +7,10 @@ export default function Header() {
     { display_name: "Settings", route_name: "/settings" },
   ];
   return (
-    <header>
+    <header className="flex justify-between mx-5">
       <Link to="/">Logo</Link>
       <nav>
-        <ul>
+        <ul className="flex justify-between gap-2">
           {header_navs.map((nav, index) => (
             <li key={index}>
               <Link to={nav.route_name}>{nav.display_name}</Link>
