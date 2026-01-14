@@ -19,7 +19,7 @@ export default function Card({
         />
       </div>*/}
       <h1 className="text-md font-bold">{name || title}</h1>
-      <h2 className="text-sm ">{description || body}</h2>
+      <h2 className="text-sm ">{description || `${body.slice(0, 80)} ...`}</h2>
       <div className="flex justify-between w-full items-center">
         {/*  <Button
           textContent="-"
