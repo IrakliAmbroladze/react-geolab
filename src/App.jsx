@@ -8,6 +8,7 @@ import Billing from "./pages/settings/Billing";
 import ChangePassword from "./pages/settings/ChangePassword";
 import SettingsHome from "./pages/settings/SettingsHome";
 import SettingsLayout from "./layouts/SettingsLayout";
+import Products from "./pages/Products";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/products" element={<Products />} />
           <Route path="/settings" element={<SettingsLayout />}>
             <Route index element={<SettingsHome />} />
             <Route path="billing" element={<Billing />} />
