@@ -1,7 +1,13 @@
+import { Link } from "react-router-dom";
 import { Button } from "./Button";
 
-export default function Card({ product, handleBtnClick }) {
-  const { id, name, /*quantity,*/ description } = product;
+export default function Card({
+  product,
+  handleBtnClick,
+  deleteBtn = false,
+  detailsBtn = false,
+}) {
+  const { id, name, /*quantity,*/ description, title, body } = product;
 
   return (
     <div className="w-80 flex flex-col items-start gap-2 hover:shadow-md hover:scale-102 p-2 rounded-lg justify-between bg-white transition-all duration-300 ease-in-out">
@@ -12,8 +18,8 @@ export default function Card({ product, handleBtnClick }) {
           className="w-full h-52 object-cover relative"
         />
       </div>*/}
-      <h1 className="text-md font-bold">{name}</h1>
-      <h2 className="text-sm ">{description}</h2>
+      <h1 className="text-md font-bold">{name || title}</h1>
+      <h2 className="text-sm ">{description || body}</h2>
       <div className="flex justify-between w-full items-center">
         {/*  <Button
           textContent="-"
@@ -26,11 +32,18 @@ export default function Card({ product, handleBtnClick }) {
           bgColor="skyblue"
           handleClick={() => handleBtnClick({ id, status: "increase" })}
         />*/}
-        <Button
-          textContent="delete"
-          bgColor="tomato"
-          handleClick={() => handleBtnClick({ id, status: "delete" })}
-        />
+        {deleteBtn && (
+          <Button
+            textContent="delete"
+            bgColor="tomato"
+            handleClick={() => handleBtnClick({ id, status: "delete" })}
+          />
+        )}
+        {detailsBtn && (
+          <Link to={`posts/${id}`}>
+            <Button textContent="details" bgColor="navy" />
+          </Link>
+        )}
       </div>
     </div>
   );
