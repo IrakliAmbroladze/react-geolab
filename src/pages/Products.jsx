@@ -67,7 +67,12 @@ export default function Products() {
       </div>
       <div className="grid w-fit grid-cols-1 md:grid-cols-2 gap-4 py-10 mx-auto">
         {filteredProducts.map((p) => (
-          <Card key={p.id} product={p} handleBtnClick={handleBtnClick} />
+          <Card
+            key={p.id}
+            product={p}
+            handleBtnClick={handleBtnClick}
+            deleteBtn={true}
+          />
         ))}
       </div>
     </div>
