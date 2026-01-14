@@ -1,6 +1,12 @@
+import { Link } from "react-router-dom";
 import { Button } from "./Button";
 
-export default function Card({ product, handleBtnClick, deleteBtn }) {
+export default function Card({
+  product,
+  handleBtnClick,
+  deleteBtn = false,
+  detailsBtn = false,
+}) {
   const { id, name, /*quantity,*/ description, title, body } = product;
 
   return (
@@ -32,6 +38,11 @@ export default function Card({ product, handleBtnClick, deleteBtn }) {
             bgColor="tomato"
             handleClick={() => handleBtnClick({ id, status: "delete" })}
           />
+        )}
+        {detailsBtn && (
+          <Link to={`posts/${id}`}>
+            <Button textContent="details" bgColor="navy" />
+          </Link>
         )}
       </div>
     </div>
