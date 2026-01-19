@@ -33,7 +33,7 @@ export const Post = () => {
           ))}
         </div>
       )}
-      <Comments />
+      <Comments postId={id} />
     </div>
   );
 };
