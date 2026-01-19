@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 export const Comments = ({ postId }) => {
   const [comments, setComments] = useState([]);
   const [postComments, setPostComments] = useState([]);
+
   useEffect(() => {
     const fetchComments = async () => {
       const { data } = await axios.get(
@@ -13,10 +14,22 @@ export const Comments = ({ postId }) => {
     };
     fetchComments();
   }, []);
-  const singlePostComments = comments.filter(
-    (comment) => comment.postId === postId,
+
+  useEffect(() => {
+    setPostComments(
+      comments.filter((comment) => comment.postId === Number(postId)),
+    );
+  }, [comments, postId]);
+
+  return (
+    <div>
+      <h3>These are comments</h3>
+      {postComments.map((comment) => (
+        <div key={comment.id}>
+          <h4>{comment.name}</h4>
+          <p>{comment.body}</p>
+        </div>
+      ))}
+    </div>
   );
-  setPostComments(singlePostComments);
-  console.log(postComments);
-  return <div>These are comments</div>;
 };
