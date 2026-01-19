@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button } from "./Button";
+import { CommentInputForm } from "./CommentInputForm";
 
 export const Comments = ({ postId }) => {
   const [comments, setComments] = useState([]);
@@ -30,11 +31,17 @@ export const Comments = ({ postId }) => {
     }
   };
 
+  const createComment = async (e) => {
+    e.preventDefault();
+    console.log("clicked button in form");
+  };
+
   return (
     <div>
       <h3 className="text-2xl font-extrabold tracking-tight text-stone-400 ">
         Comments
       </h3>
+      <CommentInputForm createComment={createComment} />
       <ul className="bg-gray-200 p-2.5 rounded-md flex flex-col gap-2.5">
         {comments.map((comment) => (
           <li key={comment.id} className="bg-stone-100 p-2.5">
