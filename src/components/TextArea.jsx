@@ -3,6 +3,7 @@ export const TextArea = ({
   value = "",
   placeholder = "Enter text ...",
   onChange = () => {},
+  name = "textarea",
 }) => (
   <textarea
     type={type}
@@ -10,5 +11,6 @@ export const TextArea = ({
     placeholder={placeholder}
     className="border rounded-md p-2 w-full mt-2 mb-4"
     onChange={onChange}
+    name={name}
   />
 );

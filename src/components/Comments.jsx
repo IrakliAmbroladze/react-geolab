@@ -33,7 +33,13 @@ export const Comments = ({ postId }) => {
 
   const createComment = async (e) => {
     e.preventDefault();
-    console.log("clicked button in form");
+    const formData = new FormData(e.target);
+    const newComment = formData.get("comment");
+    const id = comments[comments.length - 1].id + 1;
+    setComments([
+      { postId: Number(postId), id, name: "", body: newComment },
+      ...comments,
+    ]);
   };
 
   return (
@@ -42,10 +48,12 @@ export const Comments = ({ postId }) => {
         Comments
       </h3>
       <CommentInputForm createComment={createComment} />
-      <ul className="bg-gray-200 p-2.5 rounded-md flex flex-col gap-2.5">
+      <ul className="bg-gray-200 p-2.5 rounded-md flex flex-col gap-2.5 mt-5">
         {comments.map((comment) => (
-          <li key={comment.id} className="bg-stone-100 p-2.5">
-            <h4>{comment.name}</h4>
+          <li
+            key={comment.id}
+            className="bg-stone-100 p-2.5 flex justify-between items-center gap-2"
+          >
             <p>{comment.body}</p>
             <Button
               handleClick={() => deletePost(comment.id)}
