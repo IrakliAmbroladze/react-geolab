@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { products } from "../constants/products";
+import { Comments } from "../components/Comments";
 
 export const Post = () => {
   const { id } = useParams();
@@ -32,6 +33,7 @@ export const Post = () => {
           ))}
         </div>
       )}
+      <Comments postId={id} />
     </div>
   );
 };
