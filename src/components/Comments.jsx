@@ -36,6 +36,7 @@ export const Comments = ({ postId }) => {
   const createComment = async (e) => {
     e.preventDefault();
     const newComment = commentRef.current.value;
+    if (newComment.trim().length === 0) return;
     commentRef.current.value = "";
     let id = Math.random();
     setComments([
