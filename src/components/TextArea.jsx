@@ -1,11 +1,13 @@
 export const TextArea = ({
   type = "text",
-  value = "",
+  value = undefined,
   placeholder = "Enter text ...",
-  onChange = () => {},
+  onChange = undefined,
   name = "textarea",
+  ref = null,
 }) => (
   <textarea
+    ref={ref}
     type={type}
     value={value}
     placeholder={placeholder}
