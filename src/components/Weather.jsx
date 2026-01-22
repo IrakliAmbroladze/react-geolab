@@ -1,14 +1,38 @@
 import { Cloud } from "lucide-react";
 import { Button } from "./Button";
 import { WeatherCard } from "./WeatherCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Weather() {
+  const [currentCity, setCurrentCity] = useState("Tbilisi");
+  const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather";
+  const { VITE_WEATHER_API_KEY } = import.meta.env;
+
   const weatherData = [
     { title: "Humidity", result: "x" },
     { title: "Wind Speed", result: "x" },
     { title: "Pressure", result: "x" },
     { title: "Visibility", result: "x" },
   ];
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        const response = await axios.get(WEATHER_API_URL, {
+          params: {
+            q: currentCity,
+            appid: VITE_WEATHER_API_KEY,
+          },
+        });
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchWeather();
+  }, [currentCity, VITE_WEATHER_API_KEY]);
+
   return (
     <div className="relative flex justify-center items-center h-full w-full bg-[url(assets/weather.jpg)] bg-cover bg-center">
       <div className="absolute inset-0 bg-black/40"></div>
@@ -21,9 +45,9 @@ export default function Weather() {
           />
           <Button textContent="search" bgColor="#A9A9A9" />
         </div>
-        <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md">
+        <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md flex flex-col justify-between">
           <div className="flex justify-between items-center">
-            <h2 className="text-3xl ">Tbilisi</h2>
+            <h2 className="text-3xl ">{currentCity}</h2>
             <h3>
               <Cloud size="72px" />
             </h3>
@@ -32,7 +56,7 @@ export default function Weather() {
             <h2 className="text-5xl font-bold">2°</h2>
             <h3 className="text-4xl">Light snow</h3>
           </div>
-          <div className="border flex justify-between gap-4">
+          <div className=" flex justify-between gap-4">
             {weatherData.map((item) => (
               <WeatherCard
                 title={item.title}
