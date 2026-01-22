@@ -16,9 +16,9 @@ export default function Weather() {
         </div>
         <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md">
           <div className="flex justify-between">
-            <h2>Tbilisi</h2>
+            <h2 className="text-5xl">Tbilisi</h2>
             <h3>
-              <Cloud />
+              <Cloud size="72px" />
             </h3>
           </div>
         </div>
