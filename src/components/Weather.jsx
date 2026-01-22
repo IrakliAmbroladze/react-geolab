@@ -1,3 +1,4 @@
+import { Cloud } from "lucide-react";
 import { Button } from "./Button";
 
 export default function Weather() {
@@ -13,7 +14,14 @@ export default function Weather() {
           />
           <Button textContent="search" bgColor="#A9A9A9" />
         </div>
-        <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md"></div>
+        <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md">
+          <div className="flex justify-between">
+            <h2>Tbilisi</h2>
+            <h3>
+              <Cloud />
+            </h3>
+          </div>
+        </div>
       </div>
     </div>
   );
