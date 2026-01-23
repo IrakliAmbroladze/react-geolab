@@ -1,8 +1,8 @@
 import { Cloud } from "lucide-react";
-import { Button } from "./Button";
 import { WeatherCard } from "./WeatherCard";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { Search } from "./Search";
 
 export default function Weather() {
   const [currentCity, setCurrentCity] = useState("Tbilisi");
@@ -53,23 +53,7 @@ export default function Weather() {
         <h1 className="text-3xl font-bold text-center mb-5">
           Today's Weather Forecast
         </h1>
-        <form className="flex gap-10 ">
-          <input
-            type="text"
-            placeholder="Enter city ..."
-            className="flex-1 border border-white rounded-md p-2.5 text-white focus:outline-none focus:shadow-lg"
-            ref={searchRef}
-          />
-          <Button
-            type="submit"
-            textContent="search"
-            bgColor="#A9A9A9"
-            handleClick={(e) => {
-              e.preventDefault();
-              handleSearch();
-            }}
-          />
-        </form>
+        <Search {...{ searchRef, handleSearch }} />
         <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md flex flex-col justify-between px-5 py-2">
           {isLoading ? (
             <div className="w-full flex items-center justify-center">
