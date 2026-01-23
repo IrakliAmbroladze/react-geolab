@@ -11,10 +11,10 @@ export default function Weather() {
   const { VITE_WEATHER_API_KEY } = import.meta.env;
 
   const weatherData = [
-    { title: "Humidity", result: weather?.main.humidity || "--" },
-    { title: "Wind Speed", result: weather?.wind.speed || "--" },
+    { title: "Humidity", result: `${weather?.main.humidity || "--"} %` },
+    { title: "Wind Speed", result: `${weather?.wind.speed || "--"} m/s` },
     { title: "Pressure", result: weather?.main.pressure || "--" },
-    { title: "Visibility", result: weather?.visibility || "--" },
+    { title: "Visibility", result: `${weather?.visibility || "--"} Meters` },
   ];
   const searchRef = useRef(null);
   useEffect(() => {
@@ -65,11 +65,13 @@ export default function Weather() {
               {weather?.name || "Please enter a valid city name"}
             </h2>
             <h3>
-              {weather && (
+              {weather ? (
                 <img
                   src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
                   alt="icon"
                 />
+              ) : (
+                <Cloud className="w-[100px] h-[100px] p-[20px]" />
               )}
             </h3>
           </div>
