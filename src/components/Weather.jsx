@@ -34,8 +34,8 @@ export default function Weather() {
   }, [currentCity, VITE_WEATHER_API_KEY]);
 
   const handleSearch = () => {
-    console.log("clicked on search button");
-    return;
+    setCurrentCity(searchRef.current.value);
+    searchRef.current.value = "";
   };
 
   return (
