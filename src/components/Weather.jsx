@@ -62,7 +62,7 @@ export default function Weather() {
         <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md flex flex-col justify-between p-2.5">
           <div className="flex justify-between items-center">
             <h2 className="text-3xl ">
-              {weather?.name ?? "Please enter valid city name"}
+              {weather?.name || "Please enter valid city name"}
             </h2>
             <h3>
               <img
@@ -72,7 +72,9 @@ export default function Weather() {
             </h3>
           </div>
           <div className="flex gap-5 items-center">
-            <h2 className="text-5xl font-bold">2°</h2>
+            <h2 className="text-5xl font-bold">
+              {Math.round(weather?.main.temp) || "--"}°
+            </h2>
             <h3 className="text-4xl">Light snow</h3>
           </div>
           <div className=" flex justify-between gap-4">
