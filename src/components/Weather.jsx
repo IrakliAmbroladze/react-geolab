@@ -1,7 +1,7 @@
 import { Cloud } from "lucide-react";
 import { Button } from "./Button";
 import { WeatherCard } from "./WeatherCard";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 export default function Weather() {
@@ -15,7 +15,7 @@ export default function Weather() {
     { title: "Pressure", result: "x" },
     { title: "Visibility", result: "x" },
   ];
-
+  const searchRef = useRef(null);
   useEffect(() => {
     const fetchWeather = async () => {
       try {
@@ -33,6 +33,11 @@ export default function Weather() {
     fetchWeather();
   }, [currentCity, VITE_WEATHER_API_KEY]);
 
+  const handleSearch = () => {
+    console.log("clicked on search button");
+    return;
+  };
+
   return (
     <div className="relative flex justify-center items-center h-full w-full bg-[url(assets/weather.jpg)] bg-cover bg-center">
       <div className="absolute inset-0 bg-black/40"></div>
@@ -42,8 +47,13 @@ export default function Weather() {
             type="text"
             placeholder="Enter city ..."
             className="flex-1 border border-white rounded-md p-2.5 text-white"
+            ref={searchRef}
           />
-          <Button textContent="search" bgColor="#A9A9A9" />
+          <Button
+            textContent="search"
+            bgColor="#A9A9A9"
+            handleClick={handleSearch}
+          />
         </div>
         <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md flex flex-col justify-between">
           <div className="flex justify-between items-center">
