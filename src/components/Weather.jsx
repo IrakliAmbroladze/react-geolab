@@ -48,14 +48,14 @@ export default function Weather() {
   };
 
   return (
-    <div className="relative flex justify-center items-center h-full w-full bg-[url(assets/weather.jpg)] bg-cover bg-center">
+    <div className="relative flex justify-center items-center h-full w-full bg-[url(/assets/weather.jpg)] bg-cover bg-center">
       <div className="absolute inset-0 bg-black/40"></div>
-      <div className="relative z-10 max-w-4xl w-full text-white">
-        <h1 className="text-3xl font-bold text-center mb-5">
+      <div className="relative z-10 max-w-4xl w-full text-white p-5">
+        <h1 className="text-3xl font-bold text-center my-5">
           Today's Weather Forecast
         </h1>
         <Search {...{ searchRef, handleSearch }} />
-        <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md flex flex-col justify-between px-5 py-2">
+        <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[20px] sm:mt-[40px] rounded-md flex flex-col justify-between px-5 py-2">
           {isLoading ? (
             <Loader />
           ) : (
@@ -75,7 +75,7 @@ export default function Weather() {
                   )}
                 </h3>
               </div>
-              <div className="flex gap-5 items-center">
+              <div className="flex gap-5 items-center mb-5">
                 <h2 className="text-5xl font-bold">
                   {Math.round(weather?.main.temp) || "--"}°
                 </h2>
@@ -83,7 +83,7 @@ export default function Weather() {
                   {weather?.weather[0].main || "----"}
                 </h3>
               </div>
-              <div className=" flex justify-between gap-4">
+              <div className=" flex justify-between gap-4 flex-col sm:flex-row">
                 {weatherData.map((item) => (
                   <WeatherCard
                     title={item.title}

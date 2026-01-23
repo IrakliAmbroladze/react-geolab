@@ -1,7 +1,7 @@
 import { Button } from "./Button";
 
 export const Search = ({ searchRef, handleSearch }) => (
-  <form className="flex gap-10 ">
+  <form className="flex gap-2.5 sm:gap-10 flex-col sm:flex-row">
     <input
       type="text"
       placeholder="Enter city ..."
