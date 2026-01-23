@@ -62,7 +62,10 @@ export default function Weather() {
           <div className="flex justify-between items-center">
             <h2 className="text-3xl ">{currentCity}</h2>
             <h3>
-              <Cloud size="72px" />
+              <img
+                src="https://openweathermap.org/img/wn/10d@2x.png"
+                alt="icon"
+              />
             </h3>
           </div>
           <div className="flex gap-5 items-center">
