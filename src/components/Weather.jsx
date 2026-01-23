@@ -14,8 +14,11 @@ export default function Weather() {
   const weatherData = [
     { title: "Humidity", result: `${weather?.main.humidity || "--"} %` },
     { title: "Wind Speed", result: `${weather?.wind.speed || "--"} m/s` },
-    { title: "Pressure", result: weather?.main.pressure || "--" },
-    { title: "Visibility", result: `${weather?.visibility || "--"} Meters` },
+    { title: "Pressure", result: weather?.main.pressure || "----" },
+    {
+      title: "Visibility",
+      result: `${weather?.visibility / 10 || "----"} Meters`,
+    },
   ];
   const searchRef = useRef(null);
   useEffect(() => {
@@ -47,6 +50,9 @@ export default function Weather() {
     <div className="relative flex justify-center items-center h-full w-full bg-[url(assets/weather.jpg)] bg-cover bg-center">
       <div className="absolute inset-0 bg-black/40"></div>
       <div className="relative z-10 max-w-4xl w-full text-white">
+        <h1 className="text-3xl font-bold text-center mb-5">
+          Today's Weather Forecast
+        </h1>
         <div className="flex gap-10 ">
           <input
             type="text"
