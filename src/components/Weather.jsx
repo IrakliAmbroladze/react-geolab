@@ -30,6 +30,7 @@ export default function Weather() {
         setWeather(response.data);
       } catch (error) {
         console.log(error);
+        setWeather(null);
       }
     };
     fetchWeather();
@@ -60,7 +61,9 @@ export default function Weather() {
         </div>
         <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md flex flex-col justify-between p-2.5">
           <div className="flex justify-between items-center">
-            <h2 className="text-3xl ">{currentCity}</h2>
+            <h2 className="text-3xl ">
+              {weather?.name ?? "Please enter valid city name"}
+            </h2>
             <h3>
               <img
                 src="https://openweathermap.org/img/wn/10d@2x.png"
