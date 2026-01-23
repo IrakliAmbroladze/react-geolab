@@ -3,6 +3,7 @@ import { WeatherCard } from "./WeatherCard";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Search } from "./Search";
+import { Loader } from "./Loader";
 
 export default function Weather() {
   const [currentCity, setCurrentCity] = useState("Tbilisi");
@@ -56,14 +57,7 @@ export default function Weather() {
         <Search {...{ searchRef, handleSearch }} />
         <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md flex flex-col justify-between px-5 py-2">
           {isLoading ? (
-            <div className="w-full flex items-center justify-center">
-              <img
-                src={"/assets/loading.gif"}
-                alt="loading..."
-                width={50}
-                height={50}
-              />
-            </div>
+            <Loader />
           ) : (
             <>
               <div className="flex justify-between items-center min-h-[100px]">
