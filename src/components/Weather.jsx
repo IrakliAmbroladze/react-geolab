@@ -11,10 +11,10 @@ export default function Weather() {
   const { VITE_WEATHER_API_KEY } = import.meta.env;
 
   const weatherData = [
-    { title: "Humidity", result: "x" },
-    { title: "Wind Speed", result: "x" },
-    { title: "Pressure", result: "x" },
-    { title: "Visibility", result: "x" },
+    { title: "Humidity", result: weather?.main.humidity || "--" },
+    { title: "Wind Speed", result: weather?.wind.speed || "--" },
+    { title: "Pressure", result: weather?.main.pressure || "--" },
+    { title: "Visibility", result: weather?.visibility || "--" },
   ];
   const searchRef = useRef(null);
   useEffect(() => {
