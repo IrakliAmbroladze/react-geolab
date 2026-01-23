@@ -6,6 +6,7 @@ import axios from "axios";
 
 export default function Weather() {
   const [currentCity, setCurrentCity] = useState("Tbilisi");
+  const [weather, setWeather] = useState(null);
   const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather";
   const { VITE_WEATHER_API_KEY } = import.meta.env;
 
@@ -23,15 +24,17 @@ export default function Weather() {
           params: {
             q: currentCity,
             appid: VITE_WEATHER_API_KEY,
+            units: "metric",
           },
         });
-        console.log(response);
+        setWeather(response.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchWeather();
   }, [currentCity, VITE_WEATHER_API_KEY]);
+  console.log(weather);
 
   const handleSearch = () => {
     setCurrentCity(searchRef.current.value);
@@ -55,7 +58,7 @@ export default function Weather() {
             handleClick={handleSearch}
           />
         </div>
-        <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md flex flex-col justify-between">
+        <div className="min-h-[400px] border max-w-4xl w-full text-white bg-white/10 backdrop-blur-xs mt-[40px] rounded-md flex flex-col justify-between p-2.5">
           <div className="flex justify-between items-center">
             <h2 className="text-3xl ">{currentCity}</h2>
             <h3>
