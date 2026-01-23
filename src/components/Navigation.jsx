@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 
-export const Navigation = ({ nav_list, direction = "row" }) => {
+export const Navigation = ({
+  nav_list,
+  direction = "row",
+  responsive = false,
+}) => {
   return (
     <nav>
       <ul
-        className={`flex justify-between gap-2 ${direction === "row" ? "flex-row" : "flex-col"}`}
+        className={`${responsive && "hidden sm:flex"} justify-between gap-2 ${direction === "row" ? "flex-row" : "flex-col"} `}
       >
         {nav_list.map((nav, index) => (
           <li key={index} className="hover:text-stone-500">
@@ -12,6 +16,9 @@ export const Navigation = ({ nav_list, direction = "row" }) => {
           </li>
         ))}
       </ul>
+      {responsive && (
+        <button className="sm:hidden cursor-pointer rotate-90">|||</button>
+      )}
     </nav>
   );
 };
