@@ -40,7 +40,7 @@ export default function Card({
           />
         )}
         {detailsBtn && (
-          <Link to={`posts/${id}`}>
+          <Link to={`${id}`}>
             <Button textContent="details" bgColor="navy" />
           </Link>
         )}

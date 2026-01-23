@@ -10,6 +10,7 @@ import SettingsHome from "./pages/settings/SettingsHome";
 import SettingsLayout from "./layouts/SettingsLayout";
 import Products from "./pages/Products";
 import { Post } from "./pages/Post";
+import Posts from "./pages/Posts";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/posts/:id" element={<Post />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/posts" element={<Posts />} />
           <Route path="/settings" element={<SettingsLayout />}>
             <Route index element={<SettingsHome />} />
             <Route path="billing" element={<Billing />} />

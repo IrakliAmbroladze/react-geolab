@@ -1,6 +1,7 @@
 export const header_navs = [
   { display: "Home", route: "/" },
   { display: "Products", route: "/products" },
+  { display: "Blog", route: "/posts" },
   { display: "Profile", route: "/profile" },
   { display: "Settings", route: "/settings" },
 ];
