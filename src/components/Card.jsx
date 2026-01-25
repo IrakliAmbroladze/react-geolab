@@ -6,11 +6,11 @@ export default function Card({
   handleBtnClick,
   deleteBtn = false,
   detailsBtn = false,
-  setIsEditingPost = () => {},
+  setIsEditing = () => {},
 }) {
   const { id, name, /*quantity,*/ description, title, body } = product;
   const handleEdit = () => {
-    setIsEditingPost(true);
+    setIsEditing(true);
     console.log("clicked on edit button");
   };
 
