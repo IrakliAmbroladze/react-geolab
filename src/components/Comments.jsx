@@ -4,7 +4,6 @@ import { Button } from "./Button";
 import { CommentInputForm } from "./CommentInputForm";
 
 export const Comments = ({ postId }) => {
-  console.log("render Comments component");
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const commentRef = useRef(null);
