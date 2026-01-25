@@ -8,6 +8,9 @@ export default function Card({
   detailsBtn = false,
 }) {
   const { id, name, /*quantity,*/ description, title, body } = product;
+  const handleEdit = () => {
+    console.log("clicked on edit button");
+  };
 
   return (
     <div className="w-80 flex flex-col items-start gap-2 hover:shadow-md hover:scale-102 p-2 rounded-lg justify-between bg-white transition-all duration-300 ease-in-out">
@@ -44,6 +47,7 @@ export default function Card({
             <Button textContent="details" bgColor="navy" />
           </Link>
         )}
+        <Button textContent="edit" bgColor="#24a0ed" handleClick={handleEdit} />
       </div>
     </div>
   );
