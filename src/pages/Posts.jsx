@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card.jsx";
-import { Modal } from "../components/Modal.jsx";
 import { PostEditingModal } from "../components/PostEditingModal.jsx";
 
 export default function Posts() {
@@ -28,7 +27,9 @@ export default function Posts() {
             key={p.id}
             product={p}
             detailsBtn={true}
-            setIsEditing={setIsEditingPost}
+            handleBtnClick={() => {
+              setIsEditingPost(true);
+            }}
           />
         ))}
       </div>
