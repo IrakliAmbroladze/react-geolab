@@ -1,20 +1,18 @@
 import { Link } from "react-router-dom";
-import { Modal } from "../components/Modal.jsx";
 import { Button } from "./Button";
-import { useState } from "react";
 
 export default function Card({
   product,
   handleBtnClick,
   deleteBtn = false,
   detailsBtn = false,
+  setIsEditingPost = () => {},
 }) {
   const { id, name, /*quantity,*/ description, title, body } = product;
   const handleEdit = () => {
-    setIsEditing(true);
+    setIsEditingPost(true);
     console.log("clicked on edit button");
   };
-  const [isEditing, setIsEditing] = useState(false);
 
   return (
     <div className="w-80 flex flex-col items-start gap-2 hover:shadow-md hover:scale-102 p-2 rounded-lg justify-between bg-white transition-all duration-300 ease-in-out">
@@ -52,7 +50,6 @@ export default function Card({
           </Link>
         )}
         <Button textContent="edit" bgColor="#24a0ed" handleClick={handleEdit} />
-        {isEditing && <Modal>Initial modal</Modal>}
       </div>
     </div>
   );
