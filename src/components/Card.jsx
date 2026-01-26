@@ -19,7 +19,10 @@ export default function Card({
         />
       </div>*/}
       <h1 className="text-md font-bold">{name || title}</h1>
-      <h2 className="text-sm ">{description || `${body.slice(0, 80)} ...`}</h2>
+      <h2 className="text-sm ">
+        {description ||
+          `${body.length > 80 ? `${body.slice(0, 80)} ...` : body}`}
+      </h2>
       <div className="flex justify-between w-full items-center">
         {/*  <Button
           textContent="-"
@@ -44,6 +47,11 @@ export default function Card({
             <Button textContent="details" bgColor="navy" />
           </Link>
         )}
+        <Button
+          textContent="edit"
+          bgColor="#24a0ed"
+          handleClick={handleBtnClick}
+        />
       </div>
     </div>
   );
