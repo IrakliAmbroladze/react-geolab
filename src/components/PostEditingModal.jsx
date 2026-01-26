@@ -1,18 +1,20 @@
 import { Button } from "./Button";
 import { Modal } from "./Modal";
 
-export const PostEditingModal = ({ post, handleBtnClick = () => {} }) => {
-  console.log("Post is: ", post);
+export const PostEditingModal = ({
+  savePost,
+  post,
+  cancelPostEditing = () => {},
+}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const title = formData.get("title");
     const body = formData.get("body");
-    console.log("title is: ", title);
-    console.log("body is: ", body);
+    savePost({ title, body });
   };
   return (
-    <Modal handleClose={handleBtnClick}>
+    <Modal handleClose={cancelPostEditing}>
       <form onSubmit={handleSubmit} className="mt-2.5">
         <input
           type="text"
