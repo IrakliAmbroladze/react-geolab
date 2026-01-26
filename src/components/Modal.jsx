@@ -1,6 +1,11 @@
 import { Button } from "./Button";
 
-export const Modal = ({ children, handleClose = () => {} }) => {
+export const Modal = ({
+  children,
+  handleSave = () => {},
+  handleClose = () => {},
+  hasSaveBtn = false,
+}) => {
   return (
     <div className="fixed inset-0 bg-black/60 flex flex-col items-center justify-center z-50">
       <div className="bg-white max-w-125 w-full p-4 rounded-md">
@@ -8,6 +13,15 @@ export const Modal = ({ children, handleClose = () => {} }) => {
           <Button textContent="X" bgColor="tomato" handleClick={handleClose} />
         </div>
         <div>{children}</div>
+        {hasSaveBtn && (
+          <div className="text-end">
+            <Button
+              textContent="save"
+              bgColor="green"
+              handleClick={handleSave}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
