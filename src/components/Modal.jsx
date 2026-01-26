@@ -17,7 +17,7 @@ export const Modal = ({
           <div className="text-end">
             <Button
               textContent="save"
-              bgColor="green"
+              bgColor="forestgreen"
               handleClick={handleSave}
             />
           </div>
