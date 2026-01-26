@@ -22,6 +22,11 @@ export default function Posts() {
 
   const savePost = async (payload) => {
     try {
+      if (
+        editingPost.title === payload.title &&
+        editingPost.body === payload.body
+      )
+        return;
       const response = await axios.patch(
         `https://jsonplaceholder.typicode.com/posts/${editingPost.id}`,
         payload,
@@ -31,10 +36,10 @@ export default function Posts() {
           post.id === editingPost.id ? response.data : post,
         ),
       );
-
-      setEditingPost(null);
     } catch (error) {
       console.log(error);
+    } finally {
+      setEditingPost(null);
     }
   };
 
