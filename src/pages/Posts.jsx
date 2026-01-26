@@ -5,7 +5,6 @@ import { PostEditingModal } from "../components/PostEditingModal.jsx";
 export default function Posts() {
   const [posts, setPosts] = useState([]);
   const [editingPost, setEditingPost] = useState(false);
-  console.log("editing post is: ", editingPost);
 
   useEffect(() => {
     const fetchData = async () => {
