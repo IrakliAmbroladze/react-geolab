@@ -117,6 +117,7 @@ export const RegisterForm = () => {
         />
         <ValidationError>{validationErrors.password}</ValidationError>
         <Button
+          disabled={isLoading}
           type="submit"
           textContent={
             isLoading ? (
