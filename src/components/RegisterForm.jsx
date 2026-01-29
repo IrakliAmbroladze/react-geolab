@@ -32,6 +32,7 @@ export const RegisterForm = () => {
         name="email"
         value={formData.email}
         onChange={handleChange}
+        required={true}
       />
       <Input
         type="text"
@@ -39,6 +40,7 @@ export const RegisterForm = () => {
         name="username"
         value={formData.username}
         onChange={handleChange}
+        required={true}
       />
       <Input
         type="password"
@@ -46,6 +48,7 @@ export const RegisterForm = () => {
         name="password"
         value={formData.password}
         onChange={handleChange}
+        required={true}
       />
       <Button type="submit" textContent="submit" />
     </form>
