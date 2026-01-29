@@ -55,7 +55,7 @@ export const RegisterForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-5 max-w-96 w-full px-2.5"
+      className="flex flex-col gap-0.5 max-w-96 w-full px-2.5"
     >
       <Input
         type="email"
@@ -65,9 +65,7 @@ export const RegisterForm = () => {
         onChange={handleChange}
         required={true}
       />
-      {validationErrors.email && (
-        <ValidationError>{validationErrors.email}</ValidationError>
-      )}
+      <ValidationError>{validationErrors.email}</ValidationError>
       <Input
         type="text"
         placeholder="Username"
@@ -76,9 +74,7 @@ export const RegisterForm = () => {
         onChange={handleChange}
         required={true}
       />
-      {validationErrors.username && (
-        <ValidationError>{validationErrors.username}</ValidationError>
-      )}
+      <ValidationError>{validationErrors.username}</ValidationError>
 
       <Input
         type="password"
@@ -88,10 +84,7 @@ export const RegisterForm = () => {
         onChange={handleChange}
         required={true}
       />
-      {validationErrors.password && (
-        <ValidationError>{validationErrors.password}</ValidationError>
-      )}
-
+      <ValidationError>{validationErrors.password}</ValidationError>
       <Button type="submit" textContent="submit" />
     </form>
   );
