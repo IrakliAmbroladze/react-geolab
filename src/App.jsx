@@ -11,6 +11,7 @@ import SettingsLayout from "./layouts/SettingsLayout";
 import Products from "./pages/Products";
 import { Post } from "./pages/Post";
 import Posts from "./pages/Posts";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="billing" element={<Billing />} />
             <Route path="change-password" element={<ChangePassword />} />
           </Route>
+          <Route path="/register" element={<Register />} />
         </Routes>
       </main>
       <Footer />

@@ -4,6 +4,7 @@ export const header_navs = [
   { display: "Blog", route: "/posts" },
   { display: "Profile", route: "/profile" },
   { display: "Settings", route: "/settings" },
+  { display: "Register", route: "/register" },
 ];
 
 export const settings_navs = [
