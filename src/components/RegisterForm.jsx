@@ -2,8 +2,13 @@ import { useState } from "react";
 import { Button } from "./Button";
 import { Input } from "./Input";
 import { ValidationError } from "./ValidationError";
+import axios from "axios";
 
 export const RegisterForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
   const [formData, setFormData] = useState({
     email: "",
     username: "",
@@ -48,44 +53,64 @@ export const RegisterForm = () => {
       [name]: validateInput(name, value),
     }));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+    try {
+      throw new Error("validation");
+      const response = await axios.post("/register", form);
+      setSuccess("Successfull Login...");
+    } catch (error) {
+      if (error.message === "validation") {
+        setError(
+          "Validation error. Registration failed. Please, check all of the inputs",
+        );
+      } else {
+        setError("Something went wrong");
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col gap-0.5 max-w-96 w-full px-2.5"
-    >
-      <Input
-        type="email"
-        placeholder="Email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        required={true}
-      />
-      <ValidationError>{validationErrors.email}</ValidationError>
-      <Input
-        type="text"
-        placeholder="Username"
-        name="username"
-        value={formData.username}
-        onChange={handleChange}
-        required={true}
-      />
-      <ValidationError>{validationErrors.username}</ValidationError>
+    <div className="max-w-96 w-full h-full px-2.5">
+      <h1 className="text-center text-2xl font-bold my-5">Registration Form</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-0.5 mb-2.5">
+        <Input
+          type="email"
+          placeholder="Email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required={true}
+        />
+        <ValidationError>{validationErrors.email}</ValidationError>
+        <Input
+          type="text"
+          placeholder="Username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          required={true}
+        />
+        <ValidationError>{validationErrors.username}</ValidationError>
 
-      <Input
-        type="password"
-        placeholder="Password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-        required={true}
-      />
-      <ValidationError>{validationErrors.password}</ValidationError>
-      <Button type="submit" textContent="submit" />
-    </form>
+        <Input
+          type="password"
+          placeholder="Password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          required={true}
+        />
+        <ValidationError>{validationErrors.password}</ValidationError>
+        <Button type="submit" textContent="submit" />
+      </form>
+      {error && (
+        <p className="border border-red-500 px-3 text-red-500 rounded-sm">
+          {error}
+        </p>
+      )}
+    </div>
   );
 };
