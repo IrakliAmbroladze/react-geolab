@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Button } from "./Button";
 import { Input } from "./Input";
 import { ValidationError } from "./ValidationError";
-import axios from "axios";
+import { UImessage } from "./UImesssage";
+import { Loader } from "lucide-react";
 
 export const RegisterForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -56,12 +57,18 @@ export const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       Object.values(validationErrors).forEach((value) => {
         if (value !== "") throw new Error("validation");
       });
       // const response = await axios.post("/register", formData);
-      setSuccess("Successfull Login...");
-      console.log(formData);
+      setTimeout(() => {
+        setIsLoading(false);
+        setSuccess("Congrats! you are registered");
+        setTimeout(() => {
+          setSuccess("");
+        }, 2000);
+      }, 3000);
     } catch (error) {
       if (error.message === "validation") {
         setError(
@@ -70,8 +77,11 @@ export const RegisterForm = () => {
       } else {
         setError("Something went wrong");
       }
-    } finally {
       setIsLoading(false);
+    } finally {
+      setTimeout(() => {
+        setError("");
+      }, 2000);
     }
   };
   return (
@@ -106,13 +116,19 @@ export const RegisterForm = () => {
           required={true}
         />
         <ValidationError>{validationErrors.password}</ValidationError>
-        <Button type="submit" textContent="submit" />
+        <Button
+          type="submit"
+          textContent={
+            isLoading ? (
+              <Loader strokeWidth={1.5} size={16} className="m-auto" />
+            ) : (
+              "submit"
+            )
+          }
+        />
       </form>
-      {error && (
-        <p className="border border-red-500 px-3 text-red-500 rounded-sm">
-          {error}
-        </p>
-      )}
+      {error && <UImessage type="error">{error}</UImessage>}
+      {success && <UImessage type="success">{success}</UImessage>}
     </div>
   );
 };
