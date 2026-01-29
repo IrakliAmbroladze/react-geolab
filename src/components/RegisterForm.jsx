@@ -5,9 +5,18 @@ import { Input } from "./Input";
 export const RegisterForm = () => {
   const [formData, setFormData] = useState({
     email: "",
-    name: "",
+    username: "",
     password: "",
   });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    console.log(name);
+    console.log(value);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
@@ -17,9 +26,27 @@ export const RegisterForm = () => {
       onSubmit={handleSubmit}
       className="flex flex-col gap-2 max-w-96 w-full px-2.5"
     >
-      <Input type="email" placeholder="Email" name="email" />
-      <Input type="text" placeholder="Username" name="username" />
-      <Input type="password" placeholder="Password" name="password" />
+      <Input
+        type="email"
+        placeholder="Email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+      />
+      <Input
+        type="text"
+        placeholder="Username"
+        name="username"
+        value={formData.username}
+        onChange={handleChange}
+      />
+      <Input
+        type="password"
+        placeholder="Password"
+        name="password"
+        value={formData.password}
+        onChange={handleChange}
+      />
       <Button type="submit" textContent="submit" />
     </form>
   );
