@@ -55,11 +55,13 @@ export const RegisterForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     try {
-      throw new Error("validation");
-      const response = await axios.post("/register", form);
+      Object.values(validationErrors).forEach((value) => {
+        if (value !== "") throw new Error("validation");
+      });
+      // const response = await axios.post("/register", formData);
       setSuccess("Successfull Login...");
+      console.log(formData);
     } catch (error) {
       if (error.message === "validation") {
         setError(
@@ -75,7 +77,7 @@ export const RegisterForm = () => {
   return (
     <div className="max-w-96 w-full h-full px-2.5">
       <h1 className="text-center text-2xl font-bold my-5">Registration Form</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-0.5 mb-2.5">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-0.5 mb-5">
         <Input
           type="email"
           placeholder="Email"
