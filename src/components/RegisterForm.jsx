@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "./Button";
 import { Input } from "./Input";
+import { ValidationError } from "./ValidationError";
 
 export const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -46,8 +47,6 @@ export const RegisterForm = () => {
       ...prev,
       [name]: validateInput(name, value),
     }));
-    console.log(name);
-    console.log(value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +55,7 @@ export const RegisterForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-2 max-w-96 w-full px-2.5"
+      className="flex flex-col gap-5 max-w-96 w-full px-2.5"
     >
       <Input
         type="email"
@@ -66,6 +65,9 @@ export const RegisterForm = () => {
         onChange={handleChange}
         required={true}
       />
+      {validationErrors.email && (
+        <ValidationError>{validationErrors.email}</ValidationError>
+      )}
       <Input
         type="text"
         placeholder="Username"
@@ -74,6 +76,10 @@ export const RegisterForm = () => {
         onChange={handleChange}
         required={true}
       />
+      {validationErrors.username && (
+        <ValidationError>{validationErrors.username}</ValidationError>
+      )}
+
       <Input
         type="password"
         placeholder="Password"
@@ -82,6 +88,10 @@ export const RegisterForm = () => {
         onChange={handleChange}
         required={true}
       />
+      {validationErrors.password && (
+        <ValidationError>{validationErrors.password}</ValidationError>
+      )}
+
       <Button type="submit" textContent="submit" />
     </form>
   );
