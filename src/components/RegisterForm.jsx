@@ -1,9 +1,16 @@
 import { useForm } from "react-hook-form";
 import { Button } from "./Button";
 import { Input } from "./Input";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "../validations/RegisterValidation";
 
 export const RegisterForm = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema), mode: "onBlur" });
   const onSubmit = async (data) => {
     console.log("submitted data", data);
     reset({
@@ -18,32 +25,54 @@ export const RegisterForm = () => {
       <h1 className="text-center text-2xl font-bold my-5">Registration Form</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-0.5 mb-5"
+        className="flex flex-col gap-2.5 mb-5"
       >
-        <Input
-          type="email"
-          placeholder="Email"
-          name="email"
-          register={register}
-        />
-        <Input
-          type="text"
-          placeholder="Username"
-          name="username"
-          register={register}
-        />
-        <Input
-          type="password"
-          placeholder="Password"
-          name="password"
-          register={register}
-        />
+        <div className="relative">
+          <Input
+            type="email"
+            placeholder="Email"
+            name="email"
+            register={register}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-[12px] px-2 absolute -top-2.5 left-5 bg-white">
+              {errors.email.message}
+            </p>
+          )}
+        </div>
+        <div className="relative">
+          <Input
+            type="text"
+            placeholder="Username"
+            name="username"
+            register={register}
+          />
+          {errors.username && (
+            <p className="text-red-500 text-[12px] px-2 absolute -top-2.5 left-5 bg-white">
+              {errors.username.message}
+            </p>
+          )}
+        </div>
+        <div className="relative">
+          <Input
+            type="password"
+            placeholder="Password"
+            name="password"
+            register={register}
+          />
+          {errors.password && (
+            <p className="text-red-500 text-[12px] px-2 absolute -top-2.5 left-5 bg-white">
+              {errors.password.message}
+            </p>
+          )}
+        </div>
         <Input
           type="password"
           placeholder="Confirm Password"
           name="confirm_password"
           register={register}
         />
+
         <Button type="submit" />
       </form>
     </div>
