@@ -41,6 +41,12 @@ export const RegisterForm = () => {
         else if (value.length < 8)
           return "Password must be at least 8 characters long";
         else return "";
+      case "confirm_password":
+        if (value === "") return "Password is required";
+        else if (value !== formData.password)
+          return "Confirm Password does not match";
+        else return "";
+
       default:
         return "";
     }
