@@ -3,9 +3,15 @@ import { Button } from "./Button";
 import { Input } from "./Input";
 
 export const RegisterForm = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
     console.log("submitted data", data);
+    reset({
+      email: "",
+      username: "",
+      password: "",
+      confirm_password: "",
+    });
   };
   return (
     <div className="max-w-96 w-full h-full px-2.5">
