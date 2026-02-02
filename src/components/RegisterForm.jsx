@@ -14,21 +14,14 @@ export const RegisterForm = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-0.5 mb-5"
       >
-        <input
+        <Input
           type="email"
           placeholder="Email"
           name="email"
-          //value={formData.email}
-          //onChange={handleChange}
-          {...register("email")}
+          register={register}
         />
-        <Button
-          // disabled={isLoading}
-          type="submit"
-        />
+        <Button type="submit" />
       </form>
-      {/* {error && <UImessage type="error">{error}</UImessage>} */}
-      {/* {success && <UImessage type="success">{success}</UImessage>} */}
     </div>
   );
 };
