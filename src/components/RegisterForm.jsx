@@ -20,6 +20,24 @@ export const RegisterForm = () => {
           name="email"
           register={register}
         />
+        <Input
+          type="text"
+          placeholder="Username"
+          name="username"
+          register={register}
+        />
+        <Input
+          type="password"
+          placeholder="Password"
+          name="password"
+          register={register}
+        />
+        <Input
+          type="password"
+          placeholder="Confirm Password"
+          name="confirm_password"
+          register={register}
+        />
         <Button type="submit" />
       </form>
     </div>
