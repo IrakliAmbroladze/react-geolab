@@ -14,12 +14,14 @@ export const RegisterForm = () => {
     email: "",
     username: "",
     password: "",
+    confirm_password: "",
   });
 
   const [validationErrors, setValidationErrors] = useState({
     email: "",
     username: "",
     password: "",
+    confirm_password: "",
   });
 
   const validateInput = (name, value) => {
@@ -55,6 +57,7 @@ export const RegisterForm = () => {
     }));
   };
   const handleSubmit = async (e) => {
+    console.log(formData);
     e.preventDefault();
     try {
       setIsLoading(true);
@@ -116,6 +119,16 @@ export const RegisterForm = () => {
           required={true}
         />
         <ValidationError>{validationErrors.password}</ValidationError>
+        <Input
+          type="password"
+          placeholder="Confirm Password"
+          name="confirm_password"
+          value={formData.confirm_password}
+          onChange={handleChange}
+          required={true}
+        />
+        <ValidationError>{validationErrors.confirm_password}</ValidationError>
+
         <Button
           disabled={isLoading}
           type="submit"
