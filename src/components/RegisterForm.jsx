@@ -25,7 +25,7 @@ export const RegisterForm = () => {
       <h1 className="text-center text-2xl font-bold my-5">Registration Form</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-2.5 mb-5"
+        className="flex flex-col gap-5 mb-5"
       >
         <div className="relative">
           <Input
@@ -66,13 +66,20 @@ export const RegisterForm = () => {
             </p>
           )}
         </div>
-        <Input
-          type="password"
-          placeholder="Confirm Password"
-          name="confirm_password"
-          register={register}
-        />
+        <div className="relative">
+          <Input
+            type="password"
+            placeholder="Confirm Password"
+            name="confirm_password"
+            register={register}
+          />
 
+          {errors.confirm_password && (
+            <p className="text-red-500 text-[12px] px-2 absolute -top-2.5 left-5 bg-white">
+              {errors.confirm_password.message}
+            </p>
+          )}
+        </div>
         <Button type="submit" />
       </form>
     </div>

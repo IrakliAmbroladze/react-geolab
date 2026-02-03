@@ -1,4 +1,4 @@
-import { object, string } from "yup";
+import { object, ref, string } from "yup";
 
 export const schema = object({
   email: string("input must be a text type")
@@ -13,4 +13,7 @@ export const schema = object({
   password: string("input must be a text type")
     .required("password is required")
     .min(8, "password must have at least 8 symbols"),
+  confirm_password: string()
+    .required("Confirm Password is required")
+    .oneOf([ref("password"), null], "Passwords must match"),
 });
