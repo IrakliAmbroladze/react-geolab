@@ -3,6 +3,7 @@ import { Button } from "./Button";
 import { Input } from "./Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../validations/RegisterValidation";
+import { Loader } from "lucide-react";
 
 export const RegisterForm = () => {
   const {
@@ -58,7 +59,13 @@ export const RegisterForm = () => {
         />
         <Button
           type="submit"
-          textContent="submit"
+          textContent={
+            isSubmitting ? (
+              <Loader strokeWidth={1.5} size={16} className="m-auto" />
+            ) : (
+              "submit"
+            )
+          }
           disabled={!isValid || isSubmitting}
         />
       </form>
