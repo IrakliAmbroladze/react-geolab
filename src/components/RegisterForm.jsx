@@ -9,9 +9,10 @@ export const RegisterForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isValid, isSubmitting },
   } = useForm({ resolver: yupResolver(schema), mode: "onBlur" });
   const onSubmit = async (data) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     console.log("submitted data", data);
     reset({
       email: "",
@@ -55,7 +56,11 @@ export const RegisterForm = () => {
           register={register}
           errorMessage={errors.confirm_password?.message}
         />
-        <Button type="submit" textContent="submit" />
+        <Button
+          type="submit"
+          textContent="submit"
+          disabled={!isValid || isSubmitting}
+        />
       </form>
     </div>
   );
