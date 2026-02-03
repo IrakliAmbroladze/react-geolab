@@ -3,7 +3,8 @@ import { object, ref, string } from "yup";
 export const schema = object({
   email: string("input must be a text type")
     .required("email is required")
-    .email("input is not a valid email"),
+    .email("input is not a valid email")
+    .matches(/\./, "input is not a valid email"),
 
   username: string("input must be a text type")
     .required("username is required")
@@ -12,8 +13,9 @@ export const schema = object({
 
   password: string("input must be a text type")
     .required("password is required")
-    .min(8, "password must have at least 8 symbols"),
+    .min(8, "password must have at least 8 symbols")
+    .matches(/\d/, "must include at least one number"),
   confirm_password: string()
-    .required("Confirm Password is required")
+    .required("confirm password is required")
     .oneOf([ref("password"), null], "Passwords must match"),
 });
