@@ -1,6 +1,7 @@
+import React from "react";
 import { Button } from "./Button";
 
-export const Square = ({ color, dispatch }) => {
+export const Square = React.memo(({ color, dispatch }) => {
   console.log("render Square component");
   return (
     <div className="flex flex-col gap-2">
@@ -29,4 +30,4 @@ export const Square = ({ color, dispatch }) => {
       </div>
     </div>
   );
-};
+});
