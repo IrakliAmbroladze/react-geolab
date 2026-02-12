@@ -39,7 +39,7 @@ function App() {
       <Header userName={user?.firstName} setUser={setUser} />
       <main className="flex-1">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home userName={user?.firstName} />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/posts/:id" element={<Post />} />
           <Route path="/products" element={<Products />} />

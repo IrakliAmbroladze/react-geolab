@@ -25,7 +25,6 @@ export default function Login({ setUser }) {
       localStorage.setItem("token", accessToken);
 
       const userResponse = await fetchUserByTokenh(accessToken, axios);
-      console.log(userResponse);
       setUser(userResponse.data);
     } catch (error) {
       if (error instanceof Error) {
