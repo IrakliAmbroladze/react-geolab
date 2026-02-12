@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { Form } from "../components/Form";
 import { Input } from "../components/Input";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const fetchUser = (token) =>
   axios.get("https://dummyjson.com/auth/me", {
@@ -11,8 +11,7 @@ const fetchUser = (token) =>
     },
   });
 
-export default function Login() {
-  const [user, setUser] = useState(null);
+export default function Login({ setUser }) {
   const {
     register,
     handleSubmit,
@@ -83,9 +82,6 @@ export default function Login() {
           register={register}
         />
       </Form>
-      {user && (
-        <h1 className="text-2xl font-bold">Welcome {user.firstName}!</h1>
-      )}
     </div>
   );
 }

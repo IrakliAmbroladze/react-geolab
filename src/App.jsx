@@ -14,11 +14,13 @@ import Posts from "./pages/Posts";
 import Register from "./pages/Register";
 import WeatherPage from "./pages/Weahter";
 import Login from "./pages/Login";
+import { useState } from "react";
 
 function App() {
+  const [user, setUser] = useState(null);
   return (
     <div className="flex flex-col h-dvh">
-      <Header />
+      <Header userName={user?.firstName} setUser={setUser} />
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -27,7 +29,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/posts" element={<Posts />} />
           <Route path="/weather" element={<WeatherPage />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/settings" element={<SettingsLayout />}>
             <Route index element={<SettingsHome />} />
             <Route path="billing" element={<Billing />} />
