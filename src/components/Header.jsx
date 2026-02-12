@@ -9,7 +9,7 @@ export default function Header({ userName = null, setUser = () => {} }) {
       <Navigation nav_list={[{ display: "Logo", route: "/" }]} />
       <Navigation nav_list={header_navs} responsive={true} />
       {userName ? (
-        <div>
+        <Link to="./">
           {userName}{" "}
           <Button
             textContent="logout"
@@ -18,7 +18,7 @@ export default function Header({ userName = null, setUser = () => {} }) {
               localStorage.removeItem("token");
             }}
           />
-        </div>
+        </Link>
       ) : (
         <Link to="./Login">
           <Button textContent="login" />
