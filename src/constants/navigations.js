@@ -1,5 +1,6 @@
 export const header_navs = [
   { display: "Home", route: "/" },
+  { display: "Weather", route: "/weather" },
   { display: "Products", route: "/products" },
   { display: "Blog", route: "/posts" },
   { display: "Profile", route: "/profile" },

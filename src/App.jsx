@@ -12,18 +12,40 @@ import Products from "./pages/Products";
 import { Post } from "./pages/Post";
 import Posts from "./pages/Posts";
 import Register from "./pages/Register";
+import WeatherPage from "./pages/Weahter";
+import Login from "./pages/Login";
+import { useEffect, useState } from "react";
+import { fetchUserByTokenh } from "./utils/fetch-user-by-token";
+import axios from "axios";
 
 function App() {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const restoreSession = async () => {
+      const savedToken = localStorage.getItem("token");
+      if (!savedToken) return;
+
+      try {
+        const userResponse = await fetchUserByTokenh(savedToken, axios);
+        setUser(userResponse.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    restoreSession();
+  }, []);
   return (
     <div className="flex flex-col h-dvh">
-      <Header />
+      <Header userName={user?.firstName} setUser={setUser} />
       <main className="flex-1">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home userName={user?.firstName} />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/posts/:id" element={<Post />} />
           <Route path="/products" element={<Products />} />
           <Route path="/posts" element={<Posts />} />
+          <Route path="/weather" element={<WeatherPage />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/settings" element={<SettingsLayout />}>
             <Route index element={<SettingsHome />} />
             <Route path="billing" element={<Billing />} />
