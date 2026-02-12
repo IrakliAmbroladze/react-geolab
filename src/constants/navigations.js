@@ -1,10 +1,12 @@
 export const header_navs = [
   { display: "Home", route: "/" },
+  { display: "Weather", route: "/weather" },
   { display: "Products", route: "/products" },
   { display: "Blog", route: "/posts" },
   { display: "Profile", route: "/profile" },
   { display: "Settings", route: "/settings" },
   { display: "Register", route: "/register" },
+  { display: "Login", route: "/login" },
 ];
 
 export const settings_navs = [

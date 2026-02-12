@@ -12,6 +12,8 @@ import Products from "./pages/Products";
 import { Post } from "./pages/Post";
 import Posts from "./pages/Posts";
 import Register from "./pages/Register";
+import WeatherPage from "./pages/Weahter";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/posts/:id" element={<Post />} />
           <Route path="/products" element={<Products />} />
           <Route path="/posts" element={<Posts />} />
+          <Route path="/weather" element={<WeatherPage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/settings" element={<SettingsLayout />}>
             <Route index element={<SettingsHome />} />
             <Route path="billing" element={<Billing />} />
