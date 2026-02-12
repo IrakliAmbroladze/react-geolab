@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Form } from "../components/Form";
 import { Input } from "../components/Input";
+import axios from "axios";
 
 export default function Login() {
   const {
@@ -10,8 +11,23 @@ export default function Login() {
     formState: { isSubmitting },
   } = useForm();
   const onSubmit = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log("submitted data", data);
+    const { username, password } = data;
+    try {
+      const response = await axios.post("https://dummyjson.com/auth/login", {
+        username,
+        password,
+        expiresInMins: 30,
+      });
+
+      const accessToken = response.data.accessToken;
+      console.log("access token is: ", accessToken);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error("error message is: ", error.message);
+      } else {
+        console.error("error is: ", error);
+      }
+    }
     reset({
       username: "",
       password: "",
