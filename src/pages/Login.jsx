@@ -2,14 +2,7 @@ import { useForm } from "react-hook-form";
 import { Form } from "../components/Form";
 import { Input } from "../components/Input";
 import axios from "axios";
-import { useEffect } from "react";
-
-const fetchUser = (token) =>
-  axios.get("https://dummyjson.com/auth/me", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+import { fetchUserByTokenh } from "../utils/fetch-user-by-token";
 
 export default function Login({ setUser }) {
   const {
@@ -18,21 +11,6 @@ export default function Login({ setUser }) {
     reset,
     formState: { isSubmitting },
   } = useForm();
-
-  useEffect(() => {
-    const restoreSession = async () => {
-      const savedToken = localStorage.getItem("token");
-      if (!savedToken) return;
-
-      try {
-        const userResponse = await fetchUser(savedToken);
-        setUser(userResponse.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    restoreSession();
-  }, []);
 
   const onSubmit = async (data) => {
     const { username, password } = data;
@@ -46,7 +24,7 @@ export default function Login({ setUser }) {
       const accessToken = response.data.accessToken;
       localStorage.setItem("token", accessToken);
 
-      const userResponse = await fetchUser(accessToken);
+      const userResponse = await fetchUserByTokenh(accessToken, axios);
       console.log(userResponse);
       setUser(userResponse.data);
     } catch (error) {

@@ -14,10 +14,26 @@ import Posts from "./pages/Posts";
 import Register from "./pages/Register";
 import WeatherPage from "./pages/Weahter";
 import Login from "./pages/Login";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchUserByTokenh } from "./utils/fetch-user-by-token";
+import axios from "axios";
 
 function App() {
   const [user, setUser] = useState(null);
+  useEffect(() => {
+    const restoreSession = async () => {
+      const savedToken = localStorage.getItem("token");
+      if (!savedToken) return;
+
+      try {
+        const userResponse = await fetchUserByTokenh(savedToken, axios);
+        setUser(userResponse.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    restoreSession();
+  }, []);
   return (
     <div className="flex flex-col h-dvh">
       <Header userName={user?.firstName} setUser={setUser} />
