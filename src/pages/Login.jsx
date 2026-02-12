@@ -20,7 +20,7 @@ export default function Login() {
       });
 
       const accessToken = response.data.accessToken;
-      console.log("access token is: ", accessToken);
+      localStorage.setItem("token", accessToken);
     } catch (error) {
       if (error instanceof Error) {
         console.error("error message is: ", error.message);
