@@ -6,7 +6,6 @@ export const header_navs = [
   { display: "Profile", route: "/profile" },
   { display: "Settings", route: "/settings" },
   { display: "Register", route: "/register" },
-  { display: "Login", route: "/login" },
 ];
 
 export const settings_navs = [

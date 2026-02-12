@@ -3,22 +3,25 @@ import { header_navs } from "../constants/navigations";
 import { Navigation } from "./Navigation";
 import { Button } from "./Button";
 
-export default function Header({ userName = true, setUser = () => {} }) {
+export default function Header({ userName = null, setUser = () => {} }) {
   return (
     <header className="flex justify-between items-center px-5 text-xl font-bold text-stone-700 bg-stone-400 min-h-[60px]">
       <Navigation nav_list={[{ display: "Logo", route: "/" }]} />
       <Navigation nav_list={header_navs} responsive={true} />
-      {userName && (
-        <Link to="./Login">
-          {" "}
+      {userName ? (
+        <div>
           {userName}{" "}
           <Button
-            textContent="Logout"
+            textContent="logout"
             handleClick={() => {
               setUser(null);
               localStorage.removeItem("token");
             }}
           />
+        </div>
+      ) : (
+        <Link to="./Login">
+          <Button textContent="login" />
         </Link>
       )}
     </header>
